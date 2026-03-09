@@ -867,6 +867,33 @@ window.onload = function() {
         runTasks();
       }
     }
+    function emitHistoryResult() {
+      var payload = {
+        mode: SelectTest ? String(SelectTest).toLowerCase() : "full",
+        serverName: fianlPingServer && fianlPingServer.ServerName ? fianlPingServer.ServerName : "",
+        downloadMbps: isFinite(downloadSpeed) ? parseFloat(downloadSpeed.toFixed(3)) : 0,
+        uploadMbps: isFinite(uploadSpeed) ? parseFloat(uploadSpeed.toFixed(3)) : 0,
+        pingMs: isFinite(pingEstimate) ? parseFloat(Number(pingEstimate).toFixed(1)) : 0,
+        jitterMs: isFinite(jitterEstimate) ? parseFloat(Number(jitterEstimate).toFixed(1)) : 0,
+        downloadMB: isFinite(dataUsedfordl) ? parseFloat((dataUsedfordl / 1048576).toFixed(3)) : 0,
+        uploadMB: isFinite(dataUsedforul) ? parseFloat((dataUsedforul / 1048576).toFixed(3)) : 0,
+        userAgent: userAgentString || ""
+      };
+      try {
+        var historyEvent;
+        if (typeof window.CustomEvent === "function") {
+          historyEvent = new CustomEvent("ost:result", {detail:payload});
+        } else {
+          historyEvent = document.createEvent("CustomEvent");
+          historyEvent.initCustomEvent("ost:result", false, false, payload);
+        }
+        window.dispatchEvent(historyEvent);
+      } catch (error) {
+        if (window.console && console.warn) {
+          console.warn("History dispatch failed", error);
+        }
+      }
+    }
     var showResult = 0;
     if (openChannel === "web") {
       showResult = webRe;
@@ -1006,6 +1033,7 @@ window.onload = function() {
         }
         if (Status === "SendR") {
           Show.showStatus("All done");
+          emitHistoryResult();
           var dummyElement = document.createElement("div");
           dummyElement.innerHTML = '<a xlink:href="https://openspeedtest.com?ref=Self-Hosted-Outro&run=5" style="cursor: pointer" target="_blank"></a>';
           var htmlAnchorElement = dummyElement.querySelector("a");

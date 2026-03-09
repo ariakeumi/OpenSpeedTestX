@@ -155,13 +155,38 @@ please get in touch with support@openspeedtest.com.
   </div>
   <object style="visibility:hidden" id="OpenSpeedTest-UI" data="assets/images/app.svg" type="image/svg+xml"></object>
  
-  <div class="Credits">
-    <a href="https://openspeedtest.com?ref=Self-Hosted&Run">SpeedTest by OpenSpeedTest™</a> is a Free and <a href="https://github.com/openspeedtest/Speed-Test">Open-Source HTML5 Network Speed Test</a> Software.
-    <p style="font-size: 12px;">&copy; Copyright 2013-2024 OpenSpeedTest™ All Rights Reserved.</p>
-</div>
-  
-  <script src="assets/js/app-2.5.4.min.js"></script>
+  <section class="history-board" aria-live="polite">
+    <div class="history-board__header">
+      <h2 class="history-board__title">测速历史记录</h2>
+    </div>
+    <div class="history-table-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>客户端 IP</th>
+            <th>下行</th>
+            <th>上行</th>
+            <th>Ping</th>
+            <th>抖动</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody"></tbody>
+      </table>
+      <p id="historyEmpty" class="history-empty">还没有测速记录，完成一次测速后会自动出现在这里。</p>
+    </div>
+  </section>
+
+  <script>
+    window.ostHistoryConfig = {
+      endpoint: "/api/history",
+      limit: 20
+    };
+  </script>
+  <script src="assets/js/app-2.5.4.js"></script>
   <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/history.js"></script>
 
 </body>
 </html>

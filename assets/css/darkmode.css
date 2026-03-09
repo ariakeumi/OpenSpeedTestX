@@ -43,3 +43,46 @@ body {
 .ConnectError {
   fill: #ffffff;
 }
+
+.history-board {
+  background: #000000;
+}
+
+.history-board__title,
+.history-table td {
+  color: #f8fafc;
+}
+
+.history-empty {
+  color: #cbd5e1;
+}
+
+.history-table-wrap {
+  background: #000000;
+}
+
+.history-table th {
+  background: #111111;
+  color: #d2d1d2;
+}
+
+.history-table th,
+.history-table td {
+  border-bottom-color: #202020;
+}
+
+.history-table tbody tr:nth-child(even) {
+  background: #0a0a0a;
+}
+
+.history-table tbody tr:hover {
+  background: #062235;
+}
+
+.history-row-delete {
+  color: #56c4fb;
+}
+
+.history-row-delete:hover {
+  color: #8cdbff;
+}
