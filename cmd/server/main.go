@@ -378,11 +378,11 @@ func resolveClientIP(browserIP, requestIP string) string {
 	browserIP = normalizeIP(browserIP)
 	requestIP = normalizeIP(requestIP)
 
-	if requestIP != "" && !isLoopbackIP(requestIP) {
-		return requestIP
-	}
 	if browserIP != "" && !isLoopbackIP(browserIP) {
 		return browserIP
+	}
+	if requestIP != "" && !isLoopbackIP(requestIP) {
+		return requestIP
 	}
 	if requestIP != "" {
 		return requestIP
