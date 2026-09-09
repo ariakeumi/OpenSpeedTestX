@@ -1,0 +1,15 @@
+{
+  "defaults": {
+    "run-as": "package"
+  },
+  "username": "openspeedtestx",
+  "groupname": "openspeedtestx",
+  "tool": [
+    {
+      "relpath": "bin/openspeedtestx",
+      "user": "package",
+      "group": "package",
+      "permission": "0755"
+    }
+  ]
+}

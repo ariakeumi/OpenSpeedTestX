@@ -1109,11 +1109,11 @@ window.onload = function() {
         dLoad = dLoaded <= 0 ? 0 : dLoaded - dDiff;
         dDiff = dLoaded;
         dTotal += dLoad;
-        dtLoad = dtDiff = 0 ? 0 : dTime - dtDiff;
+        dtLoad = dtDiff === 0 ? 0 : dTime - dtDiff;
         dtDiff = dTime;
         dtTotal += dtLoad;
         if (dTotal > 0) {
-          LiveSpeedArr = dTotal / dtTotal / 125 * upAdjust;
+          LiveSpeedArr = dTotal / dtTotal / 125 * dlAdjust;
           currentSpeed = LiveSpeedArr;
         }
       }
@@ -1133,7 +1133,7 @@ window.onload = function() {
         uLoad = uLoaded <= 0 ? 0 : uLoaded - uDiff;
         uDiff = uLoaded;
         uTotal += uLoad;
-        utLoad = utDiff = 0 ? 0 : Tym - utDiff;
+        utLoad = utDiff === 0 ? 0 : Tym - utDiff;
         utDiff = Tym;
         utTotal += utLoad;
         if (uTotal > 0) {

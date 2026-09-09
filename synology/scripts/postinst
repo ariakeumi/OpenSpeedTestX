@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eu
+
+if [ -n "${SYNOPKG_PKGVAR:-}" ]; then
+	mkdir -p "${SYNOPKG_PKGVAR}/log"
+fi
+
+if [ -n "${SYNOPKG_TEMP_LOGFILE:-}" ]; then
+	cat > "${SYNOPKG_TEMP_LOGFILE}" <<EOF
+OpenSpeedTestX installed.
+Start the package from Package Center, then open:
+http://<your-nas-ip>:${SYNOPKG_PKGPORT:-3000}/
+EOF
+fi
+
+exit 0

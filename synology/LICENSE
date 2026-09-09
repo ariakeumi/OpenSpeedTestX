@@ -1,0 +1,8 @@
+OpenSpeedTestX Synology package
+
+This package redistributes the application files contained in this repository.
+Please review the project license in the packaged application directory:
+
+  share/openspeedtestx/License.md
+
+This SPK skeleton is intended for self-hosted, manual installation on Synology DSM.

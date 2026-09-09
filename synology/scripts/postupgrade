@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+if [ -n "${SYNOPKG_PKGVAR:-}" ]; then
+	mkdir -p "${SYNOPKG_PKGVAR}/log"
+fi
+
+if [ -n "${SYNOPKG_TEMP_LOGFILE:-}" ]; then
+	echo "OpenSpeedTestX upgrade completed." > "${SYNOPKG_TEMP_LOGFILE}"
+fi
+
+exit 0
